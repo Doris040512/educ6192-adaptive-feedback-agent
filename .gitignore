@@ -1,4 +1,9 @@
 # Logs
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
 logs
 *.log
 npm-debug.log*
