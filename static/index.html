@@ -19,7 +19,7 @@
         <p class="eyebrow">THE INSTRUCTOR WORKSPACE</p>
         <h1 id="page-title">Thoughtful feedback starts here.</h1>
         <p class="subtitle">Bring the assignment, the rubric, and the writing together in one place.</p>
-        <p class="notice"><span class="status-dot" aria-hidden="true"></span><strong>Foundation preview.</strong> AI feedback and agent actions are not connected. Use fictional practice text only.</p>
+        <p class="notice"><span class="status-dot" aria-hidden="true"></span><strong>Decision preview.</strong> Select CLARIFY or ANALYZE with one API request. Feedback generation is not implemented. Use fictional practice text only.</p>
       </section>
 
       <div class="workspace">
@@ -42,8 +42,8 @@
               <p id="response-help" class="field-help">For this preview, use fictional, non-identifying practice text.</p>
               <textarea id="student-response" name="student_response" rows="7" maxlength="20000" aria-describedby="response-help" placeholder="Paste fictional practice writing here…"></textarea>
             </div>
-            <div class="form-actions"><button class="primary-button" type="button" disabled aria-describedby="generation-note">Generate feedback <span aria-hidden="true">↗</span></button><button id="clear-inputs" class="text-button" type="button">Clear inputs</button></div>
-            <p id="generation-note" class="field-help">Generation is unavailable in this foundation version. Inputs stay in this page and are not submitted or saved by the application.</p>
+            <div class="form-actions"><button id="decide-button" class="primary-button" type="submit" aria-describedby="generation-note">Check next action <span aria-hidden="true">↗</span></button><button id="clear-inputs" class="text-button" type="button">Clear inputs</button></div>
+            <p id="generation-note" class="field-help">Checking sends these inputs through the Python backend to OpenAI. No feedback is generated. The application does not save your inputs.</p>
             <p id="input-status" class="input-status" role="status" aria-live="polite"></p>
           </form>
         </section>
@@ -59,8 +59,8 @@
           </section>
 
           <section class="panel activity-panel" aria-labelledby="activity-title">
-            <div class="panel-heading"><div><p class="eyebrow">03 · PROCESS</p><h2 id="activity-title">Agent Activity</h2></div><span class="pill muted">Not connected</span></div>
-            <div class="activity-empty"><span class="activity-icon" aria-hidden="true">⋯</span><div><h3>No agent actions yet</h3><p>Future agent-selected actions will be listed here. This version has no decision loop or activity tracking.</p></div></div>
+            <div class="panel-heading"><div><p class="eyebrow">03 · PROCESS</p><h2 id="activity-title">Agent Activity</h2></div><span id="activity-status" class="pill muted">Not checked</span></div>
+            <div class="activity-empty" aria-live="polite" aria-atomic="true"><span class="activity-icon" aria-hidden="true">⋯</span><div><h3 id="activity-action">No decision requested</h3><p id="activity-explanation">Check the next action to request one agent decision. There is no autonomous loop.</p><p id="activity-question" hidden></p></div></div>
           </section>
         </div>
       </div>
