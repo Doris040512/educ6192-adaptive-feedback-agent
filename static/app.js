@@ -9,13 +9,30 @@ const activityStatus = document.querySelector("#activity-status");
 const activityAction = document.querySelector("#activity-action");
 const activityExplanation = document.querySelector("#activity-explanation");
 const activityQuestion = document.querySelector("#activity-question");
+const activityEvidence = document.querySelector("#activity-evidence");
 
-function showActivity(label, action, explanation, question = null) {
+function showActivity(label, action, explanation, question = null, evidence = []) {
   activityStatus.textContent = label;
   activityAction.textContent = action;
   activityExplanation.textContent = explanation;
   activityQuestion.textContent = question || "";
   activityQuestion.hidden = !question;
+  activityEvidence.replaceChildren();
+  if (evidence.length) {
+    const heading = document.createElement("strong");
+    heading.textContent = "Relevant rubric evidence";
+    activityEvidence.append(heading);
+    const list = document.createElement("ul");
+    evidence.forEach((item) => {
+      const entry = document.createElement("li");
+      entry.textContent = `${item.criterion}: “${item.excerpt}”`;
+      list.append(entry);
+    });
+    activityEvidence.append(list);
+    activityEvidence.hidden = false;
+  } else {
+    activityEvidence.hidden = true;
+  }
 }
 
 form.addEventListener("submit", async (event) => {
@@ -39,17 +56,20 @@ form.addEventListener("submit", async (event) => {
       validation_error: "Input needed",
       configuration_error: "Not configured",
       api_error: "API error",
+      assessment_error: "Assessment error",
       decision_complete: "Decision complete",
     };
     if (!labels[result.status] || typeof result.explanation !== "string") {
       throw new Error("Unexpected response");
     }
     if (result.status === "decision_complete" &&
-        (!response.ok || !["CLARIFY", "ANALYZE"].includes(result.action))) {
+        (!response.ok || !["CLARIFY", "ANALYZE"].includes(result.action) ||
+         !["consistent", "ambiguous", "contradictory"].includes(result.consistency_status) ||
+         !Array.isArray(result.evidence))) {
       throw new Error("Invalid decision");
     }
     showActivity(labels[result.status], result.action || "No decision made",
-      result.explanation, result.clarification_question);
+      result.explanation, result.clarification_question, result.evidence || []);
     status.textContent = result.status === "decision_complete"
       ? "Decision received. No analysis or feedback has been generated."
       : result.explanation;

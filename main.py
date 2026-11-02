@@ -12,7 +12,7 @@ from decision import DecisionInput, DecisionResult, select_action
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 
-app = FastAPI(title="Adaptive Feedback · Assignment 4 Version 1")
+app = FastAPI(title="Adaptive Feedback · Assignment 4 Version 2")
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 

@@ -57,6 +57,9 @@ h3 { font-size: 13px; font-weight: 650; margin: 3px 0 8px; }
 .review-note p { margin: 4px 0 0; color: var(--secondary); }
 .activity-empty { display: flex; gap: 14px; padding: 24px 0 3px; }
 .activity-icon { display: grid; place-items: center; flex: 0 0 32px; height: 32px; background: #f4f6f1; border: 1px dashed #d9e0d5; border-radius: 50%; color: var(--secondary); }
+.activity-evidence { margin-top: 14px; color: var(--secondary); font-size: 11px; line-height: 1.7; }
+.activity-evidence ul { margin: 5px 0 0; padding-left: 18px; }
+.activity-question { margin-top: 12px !important; padding: 11px 13px; background: #f6f7f0; border-left: 3px solid #83a78a; border-radius: 3px; color: var(--ink) !important; }
 footer { padding: 28px 0; text-align: center; color: var(--secondary); font-size: 11px; line-height: 1.6; }
 footer span { padding: 0 9px; }
 @media (max-width: 850px) { .workspace { grid-template-columns: 1fr; } main { padding-top: 32px; } }

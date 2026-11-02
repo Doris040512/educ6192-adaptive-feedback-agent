@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="An instructor workspace for rubric-aligned formative feedback. Assignment 4, Version 1 foundation.">
+    <meta name="description" content="An instructor workspace for rubric-aligned formative feedback. Assignment 4, Version 2 rubric check.">
     <title>Adaptive Feedback · Instructor workspace</title>
     <link rel="stylesheet" href="/static/styles.css">
     <script src="/static/app.js" defer></script>
@@ -11,7 +11,7 @@
   <body>
     <header class="topbar">
       <a class="brand" href="/" aria-label="Adaptive Feedback home"><span class="brand-mark" aria-hidden="true">af</span> Adaptive Feedback</a>
-      <span class="version">EDUC 6192 <span aria-hidden="true">/</span> Assignment 4 · V1</span>
+      <span class="version">EDUC 6192 <span aria-hidden="true">/</span> Assignment 4 · V2</span>
     </header>
 
     <main>
@@ -19,7 +19,7 @@
         <p class="eyebrow">THE INSTRUCTOR WORKSPACE</p>
         <h1 id="page-title">Thoughtful feedback starts here.</h1>
         <p class="subtitle">Bring the assignment, the rubric, and the writing together in one place.</p>
-        <p class="notice"><span class="status-dot" aria-hidden="true"></span><strong>Decision preview.</strong> Select CLARIFY or ANALYZE with one API request. Feedback generation is not implemented. Use fictional practice text only.</p>
+        <p class="notice"><span class="status-dot" aria-hidden="true"></span><strong>Rubric consistency check.</strong> One API request assesses assignment and rubric consistency; the backend selects ANALYZE or CLARIFY. Feedback generation is not implemented. Use fictional practice text only.</p>
       </section>
 
       <div class="workspace">
@@ -60,11 +60,11 @@
 
           <section class="panel activity-panel" aria-labelledby="activity-title">
             <div class="panel-heading"><div><p class="eyebrow">03 · PROCESS</p><h2 id="activity-title">Agent Activity</h2></div><span id="activity-status" class="pill muted">Not checked</span></div>
-            <div class="activity-empty" aria-live="polite" aria-atomic="true"><span class="activity-icon" aria-hidden="true">⋯</span><div><h3 id="activity-action">No decision requested</h3><p id="activity-explanation">Check the next action to request one agent decision. There is no autonomous loop.</p><p id="activity-question" hidden></p></div></div>
+            <div class="activity-empty" aria-live="polite" aria-atomic="true"><span class="activity-icon" aria-hidden="true">⋯</span><div><h3 id="activity-action">No decision requested</h3><p id="activity-explanation">Check the next action to request one agent decision. There is no autonomous loop.</p><div id="activity-evidence" class="activity-evidence" hidden></div><p id="activity-question" class="activity-question" hidden></p></div></div>
           </section>
         </div>
       </div>
-      <footer>Built for formative learning <span aria-hidden="true">·</span> Version 1 website foundation</footer>
+      <footer>Built for formative learning <span aria-hidden="true">·</span> EDUC 6192 Assignment 4 Version 2</footer>
     </main>
   </body>
 </html>
