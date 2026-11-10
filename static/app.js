@@ -5,6 +5,7 @@ const status = document.querySelector("#input-status");
 
 const decideButton = document.querySelector("#decide-button");
 const clearButton = document.querySelector("#clear-inputs");
+const exampleButton = document.querySelector("#load-example");
 const activityStatus = document.querySelector("#activity-status");
 const activityAction = document.querySelector("#activity-action");
 const activityExplanation = document.querySelector("#activity-explanation");
@@ -40,6 +41,7 @@ form.addEventListener("submit", async (event) => {
   if (decideButton.disabled) return;
   decideButton.disabled = true;
   clearButton.disabled = true;
+  exampleButton.disabled = true;
   const fields = [...form.querySelectorAll("textarea")];
   fields.forEach((field) => { field.readOnly = true; });
   status.textContent = "Checking inputs and requesting a decision…";
@@ -80,6 +82,7 @@ form.addEventListener("submit", async (event) => {
   } finally {
     decideButton.disabled = false;
     clearButton.disabled = false;
+    exampleButton.disabled = false;
     fields.forEach((field) => { field.readOnly = false; });
   }
 });
@@ -99,4 +102,20 @@ form.addEventListener("input", () => {
   status.textContent = "";
   showActivity("Inputs changed", "New decision needed",
     "The inputs have changed. Check the next action again.");
+});
+
+// This fictional example is safe for classroom demonstrations and requires no API call to load.
+exampleButton.addEventListener("click", () => {
+  const hasInputs = [...form.querySelectorAll("textarea")].some((field) => field.value.trim());
+  if (hasInputs && !window.confirm("Replace the current inputs with a fictional example?")) return;
+  document.querySelector("#assignment").value =
+    "Write one paragraph explaining whether AI tools should be used for studying. State a clear position and support it with two reasons.";
+  document.querySelector("#rubric").value =
+    "Position (2 points): a clear position on AI use. Reasons (4 points): two relevant reasons with explanations. Organization (2 points): ideas presented in a logical sequence.";
+  document.querySelector("#student-response").value =
+    "AI can support studying because it provides practice questions and can explain difficult ideas in simpler words.";
+  showActivity("Example loaded", "Ready to check",
+    "This fictional example has clear criteria. Submit it to check whether the rubric is sufficiently consistent. No decision has been made yet.");
+  status.textContent = "Example loaded. You may edit it before checking.";
+  document.querySelector("#assignment").focus();
 });
