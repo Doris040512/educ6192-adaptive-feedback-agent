@@ -18,14 +18,14 @@
       <section class="intro" aria-labelledby="page-title">
         <p class="eyebrow">THE INSTRUCTOR WORKSPACE</p>
         <h1 id="page-title">Thoughtful feedback starts here.</h1>
-        <p class="subtitle">Bring the assignment, the rubric, and the writing together in one place.</p>
+        <p class="subtitle">Check whether assignment instructions and grading criteria are sufficiently clear and consistent before giving feedback.</p>
         <p class="notice"><span class="status-dot" aria-hidden="true"></span><strong>Rubric consistency check.</strong> One API request assesses assignment and rubric consistency; the backend selects ANALYZE or CLARIFY. Feedback generation is not implemented. Use fictional practice text only.</p>
       </section>
 
       <div class="workspace">
         <section class="panel input-panel" aria-labelledby="input-title">
           <div class="panel-heading"><div><p class="eyebrow">01 · CONTEXT</p><h2 id="input-title">Prepare your inputs</h2></div><span class="pill">Instructor input</span></div>
-          <p class="panel-description">The assignment and rubric will guide future feedback.</p>
+          <p class="panel-description">Enter fictional assignment instructions and grading criteria. The app checks consistency; it does not evaluate student writing.</p>
           <form id="context-form">
             <div class="field">
               <label for="assignment">Assignment Instructions</label>
@@ -39,11 +39,11 @@
             </div>
             <div class="field">
               <label for="student-response">Student Response</label>
-              <p id="response-help" class="field-help">For this preview, use fictional, non-identifying practice text.</p>
+              <p id="response-help" class="field-help">Required for this V2 form, but <strong>not analyzed or sent to OpenAI</strong>. Enter fictional, non-identifying practice text only.</p>
               <textarea id="student-response" name="student_response" rows="7" maxlength="20000" aria-describedby="response-help" placeholder="Paste fictional practice writing here…"></textarea>
             </div>
-            <div class="form-actions"><button id="decide-button" class="primary-button" type="submit" aria-describedby="generation-note">Check next action <span aria-hidden="true">↗</span></button><button id="clear-inputs" class="text-button" type="button">Clear inputs</button></div>
-            <p id="generation-note" class="field-help">Checking sends these inputs through the Python backend to OpenAI. No feedback is generated. The application does not save your inputs.</p>
+            <div class="form-actions"><button id="decide-button" class="primary-button" type="submit" aria-describedby="generation-note">Check next action <span aria-hidden="true">↗</span></button><button id="load-example" class="text-button" type="button">Load example</button><button id="clear-inputs" class="text-button" type="button">Clear inputs</button></div>
+            <p id="generation-note" class="field-help">Checking sends assignment instructions and grading rubric to OpenAI through the Python backend. Student Response is required by the existing form but is not sent to OpenAI or analyzed. No feedback is generated. The application does not save your inputs.</p>
             <p id="input-status" class="input-status" role="status" aria-live="polite"></p>
           </form>
         </section>
@@ -51,7 +51,7 @@
         <div class="output-column">
           <section class="panel feedback-panel" aria-labelledby="feedback-title">
             <div class="panel-heading"><div><p class="eyebrow">02 · FEEDBACK</p><h2 id="feedback-title">Feedback preview</h2></div><span class="pill muted">Placeholder</span></div>
-            <p class="panel-description">A space for future rubric-aligned feedback, ready for instructor review.</p>
+            <p class="panel-description">Not available in Version 2. The check below determines whether the assignment and rubric can support a later instructor-reviewed feedback step.</p>
             <section class="feedback-section" aria-labelledby="strengths-title"><span class="section-symbol" aria-hidden="true">+</span><div><h3 id="strengths-title">Strengths</h3><p>Evidence-supported strengths will appear here when feedback generation is implemented.</p></div></section>
             <section class="feedback-section" aria-labelledby="improvement-title"><span class="section-symbol" aria-hidden="true">↗</span><div><h3 id="improvement-title">Areas for Improvement</h3><p>Specific opportunities connected to the supplied rubric will appear here.</p></div></section>
             <section class="feedback-section" aria-labelledby="steps-title"><span class="section-symbol" aria-hidden="true">→</span><div><h3 id="steps-title">Next Steps</h3><p>Prioritized, achievable revision suggestions will appear here.</p></div></section>
